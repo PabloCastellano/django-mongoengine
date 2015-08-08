@@ -15,6 +15,10 @@ class MongoTestCase(TestCase):
         self.conn = connect(db_name)
         super(MongoTestCase, self).__init__(methodName)
 
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
     def _post_teardown(self):
         super(MongoTestCase, self)._post_teardown()
         for collection in self.conn.db.collection_names():
